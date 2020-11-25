@@ -1,4 +1,4 @@
-const gitHub_tok = '95f312e052631077ff7e556dfab85db36ad0a272';
+const gitHub_tok = '4a6c8ea7aea15b521270c1d37dc6ffb598dd5b99';
 
 fetch('https://api.github.com/graphql', {
   method: "POST",
@@ -34,7 +34,12 @@ fetch('https://api.github.com/graphql', {
 `
   })
 })
-.then(res => res.json())
+.then(res => {
+  if(!res.ok){
+    throw Error('Ooops something went wrong');
+  }
+  return res.json();
+})
 .then(data => {
   console.log(data.data.viewer.repositories.nodes);
 
@@ -48,32 +53,28 @@ fetch('https://api.github.com/graphql', {
   let thumbnail = document.getElementById('thumbnail');
   thumbnail.setAttribute('src', avatarUrl);
 
-  let repos = data.data.viewer.repositories.nodes;
-  
-  repos.map(repo => {
-    console.log(repo.primaryLanguage.name)
-  })
+  const repos = data.data.viewer.repositories.nodes.map(repo => {
 
-  // let repos = data.data.viewer.repositories.nodes.map(repo => {
+    let date = new Date(repo.updatedAt);
 
-  //   return `
-  //         <div class="repo-list">
-  //           <div>
-  //               <a href="${repo.url}">
-  //                   <h2 class="pb-16">${repo.name}</h2>
-  //               </a>
-  //               <div>
-  //                   <span class="small-text pr-12">
-  //                       <i class="fa fa-circle fa fa-xs"></i> &nbsp;HTML
-  //                   </span>
-  //                   <span class="small-text">Updated on ${repo.updatedAt}</span>
-  //               </div>
-  //           </div>
-  //           <span class="label">
-  //               <i class="fa fa-star-o fa fa-xs"></i> &nbsp;Star
-  //           </span>
-  //         </div>
-  //   `;
-  // }).join(' ');
-  // document.getElementById('repos').innerHTML = repos;
+    return `
+          <div class="repo-list">
+            <div>
+                <a href="${repo.url}">
+                    <h2 class="pb-16">${repo.name}</h2>
+                </a>
+                <div>
+                    <span class="small-text pr-12">
+                        <i class="fa fa-circle fa fa-xs" style="color: ${repo.primaryLanguage.color}"></i> &nbsp;${repo.primaryLanguage.name}
+                    </span>
+                    <span class="small-text">Updated on ${date.getDate()} ${date.toLocaleString('en', {month:'short'})}</span>
+                </div>
+            </div>
+            <span class="label">
+                <i class="fa fa-star-o fa fa-xs"></i> &nbsp;Star
+            </span>
+          </div>
+    `;
+  }).join(' ');
+  document.getElementById('repos').innerHTML = repos;
 })
