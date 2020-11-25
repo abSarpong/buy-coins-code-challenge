@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const gitHub_tok = '4a6c8ea7aea15b521270c1d37dc6ffb598dd5b99';
+=======
+const gitHub_tok = '';
+>>>>>>> 88d80b7b7c2001794fee9417217b382bca002246
 
 fetch('https://api.github.com/graphql', {
   method: "POST",
