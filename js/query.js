@@ -1,4 +1,5 @@
-const gitHub_tok = '5e1cba50bcf5f109339b5c811202d56c545ac36c';
+// provide github generated token here
+const gitHub_token = '';
 
 fetch('https://api.github.com/graphql', {
   method: "POST",
