@@ -1,9 +1,10 @@
-const gitHub_tok = '';
+// provide github generated token here
+const gitHub_token = '';
 
 const options = {
   method: "POST",
   headers: {
-    Authorization: `bearer ${gitHub_tok}`
+    Authorization: `bearer ${gitHub_token}`
   },
   body: JSON.stringify({
     query:`
