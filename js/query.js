@@ -1,4 +1,4 @@
-const gitHub_tok = '4a6c8ea7aea15b521270c1d37dc6ffb598dd5b99';
+const gitHub_tok = 'f7e7445b4e412917408b25a9b8b156f0325c54ee';
 
 fetch('https://api.github.com/graphql', {
   method: "POST",
@@ -41,7 +41,7 @@ fetch('https://api.github.com/graphql', {
   return res.json();
 })
 .then(data => {
-  console.log(data.data.viewer.repositories.nodes);
+  // console.log(data.data.viewer.repositories.nodes);
 
   const {name, twitterUsername, bio, avatarUrl} = data.data.viewer;
 
@@ -61,7 +61,7 @@ fetch('https://api.github.com/graphql', {
           <div class="repo-list">
             <div>
                 <a href="${repo.url}">
-                    <h2 class="pb-16">${repo.name}</h2>
+                    <h2 class="heading pb-16">${repo.name}</h2>
                 </a>
                 <div>
                     <span class="small-text pr-12">

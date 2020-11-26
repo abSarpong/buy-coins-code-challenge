@@ -9,7 +9,7 @@ a {
   text-decoration: none;
   color: #0366d6;
 }
-.nav-items {
+.center-align-desktop {
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@ a {
   color: #ffffffb3;
 }
 .container {
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
 }
 .custom-grid {
@@ -34,7 +34,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
+  padding: 16px 20px;
   background-color: #242a2d;
 }
 .header-new {
@@ -53,13 +53,32 @@ a {
   width: 32px;
   height: 32px;
 }
+.thumbnail {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 8px 0 20px;
+}
 .avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
 }
+.large-avatar {
+  width: 240px;
+  border-radius: 50%;
+  border: 1px solid #e8e8e8;
+  position: relative;
+  bottom: 54px;
+}
+.mob-avatar {
+  width: 64px;
+  border-radius: 50%;
+  border: 1px solid #e8e8e8;
+  margin-right: 12px;
+}
 .input-style {
-  width: 100%;
+  width: 80%;
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #e8e8e8;
@@ -75,13 +94,33 @@ a {
 .label {
   height: 20px;
   border: 1px solid #e8e8e8;
-  padding: 5px 12px 0 12px;
+  padding: 5px 8px 0 8px;
   border-radius: 6px;
   vertical-align: middle;
   font-size: 12px;
   color: #586069;
 }
-
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 16px;
+}
+.mob-bio {
+  display: none;
+}
+.aside-mob {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.header-wrapper {
+  display: grid;
+  grid-template-rows: auto;
+}
+.hide-on-desktop {
+  display: none;
+}
 @media only screen and (max-width: 640px) {
   .custom-grid {
     display: grid;
@@ -90,5 +129,46 @@ a {
   }
   .container {
     width: 100%;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .mob-bio {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+  .mob-search-input {
+    width: 95%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #949494;
+    background-color: transparent;
+  }
+  .mob-nav {
+    display: block;
+    padding: 20px;
+    background-color: #242a2d;
+  }
+  .mob-nav-items > a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid #949494;
+    list-style: none;
+    color: #ffffffb3;
+    font-size: 14px;
+  }
+  .hide-on-mobile {
+    display: none;
+  }
+  .mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: #242a2d;
   }
 }

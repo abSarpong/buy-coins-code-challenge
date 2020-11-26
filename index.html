@@ -9,51 +9,77 @@
     <title>Michael Sarpong - BuyCoins Challenge</title>
 </head>
 <body>
-    <header class="header">
-        <div class="nav-items">
-            <img class="github-logo mr-16" src="/images/GitHub-Mark-Light-32px.png" alt="avatar">
-            <input class="search-input" type="text" placeholder="Search or jump to...">
-            <a href="">Pull requests</a>
-            <a href="">Issues</a>
-            <a href="">Codespaces</a>
-            <a href="">Marketplace</a>
-            <a href="">Explore</a>
+    <header class="header-wrapper">
+        <div class="header hide-on-mobile">
+            <div class="hide-on-mobile center-align-desktop">
+                <img class="github-logo mr-16" src="/images/GitHub-Mark-Light-32px.png" alt="logo">
+                <div class="nav-items">
+                    <input class="search-input" type="text" placeholder="Search or jump to...">
+                    <a href="">Pull requests</a>
+                    <a href="">Issues</a>
+                    <a href="">Codespaces</a>
+                    <a href="">Marketplace</a>
+                    <a href="">Explore</a>
+                </div>
+            </div>
+            <div class="hide-on-mobile center-align-desktop">
+                <i class="fa fa-bell-o white-text"></i>
+                <i class="fa fa-plus white-text pl-20 pr-8"></i>
+                <i class="fa fa-caret-down fa-xs white-text"></i>
+                <img class="thumbnail" id="thumbnail" src="" alt="thumbnail">
+                <i class="fa fa-caret-down fa fa-xs white-text"></i>
+            </div>
         </div>
-        <div style="display: flex; align-items: center;">
-            <i class="fa fa-bell-o white-text"></i>
-            <i class="fa fa-plus white-text pl-20 pr-8"></i>
-            <i class="fa fa-caret-down fa-xs white-text"></i>
-            <img class="avatar pl-20 pr-8" id="thumbnail" src="" alt="thumbnail">
-            <i class="fa fa-caret-down fa fa-xs white-text"></i>
+        <div class="mobile-nav hide-on-desktop">
+            <i class="fa fa-bars fa-lg white-text" onclick="toggleNav('mobile-nav-icon')"></i>
+            <img class="github-logo mr-16" src="/images/GitHub-Mark-Light-32px.png" alt="logo">
+            <i class="fa fa-bell-o fa-lg white-text"></i>
+        </div>
+        <div class="hide-on-desktop" id="mobile-nav-icon">
+            <input class="mob-search-input mb-8" type="text" placeholder="Search or jump to...">
+            <div class="mob-nav-items">
+                <a href="">Pull requests</a>
+                <a href="">Issues</a>
+                <a href="">Codespaces</a>
+                <a href="">Marketplace</a>
+                <a href="">Explore</a>
+            </div>
         </div>
     </header>
     <main>
-        <div class="border" style="height: 80px;">
-
-        </div>
+        <div class="border" style="height: 80px;"></div>
         <div class="container">
-            <div class="custom-grid">
-                <div>
-                    <img style="width: 280px; border-radius: 50%; position: relative; bottom: 32px;" id="avatar" alt="avatar">
+            <div class="wrapper">
+                <div class="aside p-20 hide">
+                    <img class="large-avatar" id="avatar" alt="avatar">
                     <div class="bio-section">
-                        <h2 class="heading mb-4" id="name"></h2>
+                        <h2 class="large-heading mb-4" id="name"></h2>
                         <p class="large-text mb-24" id="twitter-username"></p>
                         <p class="base-text" id="bio"></p>
                     </div>
                 </div>
-                <div>
+                <div class="mob-bio p-20 show">
+                    <div class="aside-mob">
+                        <img class="mob-avatar" id="avatar" alt="avatar">
+                        <div class="bio-section">
+                            <h2 class="heading mb-4" id="name"></h2>
+                            <p class="large-text" id="twitter-username"></p>
+                        </div>
+                    </div>
+                    <p class="base-text" id="bio"></p>
+                </div>
+                <div class="content p-20">
                     <div class="border py mb-24">
                         <input class="input-style" type="text" placeholder="Find a repository...">
                     </div>
-                    <!-- <h5 style="">8 results for public repositories</h5> -->
+                    <h5>8 results for public repositories</h5>
                     <div id="repos"></div>
                 </div>
             </div>
         </div>
     </main>
-    <footer>
-        
-    </footer>
+    <footer></footer>
     <script src="./js/query.js"></script>
+    <script src="./js/scripts.js"></script>
 </body>
 </html>
