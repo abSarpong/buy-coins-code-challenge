@@ -30,6 +30,7 @@
                 <i class="fa fa-caret-down fa fa-xs white-text"></i>
             </div>
         </div>
+        <!-- Mobile View begins here-->
         <div class="mobile-nav hide-on-desktop">
             <i class="fa fa-bars fa-lg white-text" onclick="toggleNav('mobile-nav-icon')"></i>
             <img class="github-logo mr-16" src="/images/GitHub-Mark-Light-32px.png" alt="logo">
@@ -45,35 +46,43 @@
                 <a href="">Explore</a>
             </div>
         </div>
+        <!-- Mobile View ends here -->
     </header>
     <main>
-        <div class="border" style="height: 80px;"></div>
+        <div class="tabs-section">
+            <div class="container">
+                <div class="wrapper">
+                    <div></div>
+                    <div class="tab-items p-20">
+                        <a class="tab-item" id="tab-item-one" href="#overview">Overviews</a>
+                        <a class="tab-item" id="tab-item-two" href="#repositories">Repositories</a>
+                        <a class="tab-item" id="tab-item-three" href="#projects">Projects</a>
+                        <a class="tab-item" id="tab-item-four" href="#packages">Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="wrapper">
-                <div class="aside p-20 hide">
-                    <img class="large-avatar" id="avatar" alt="avatar">
+                <div class="aside p-20">
+                    <img class="profile-image" id="avatar" alt="avatar">
                     <div class="bio-section">
                         <h2 class="large-heading mb-4" id="name"></h2>
                         <p class="large-text mb-24" id="twitter-username"></p>
                         <p class="base-text" id="bio"></p>
                     </div>
                 </div>
-                <div class="mob-bio p-20 show">
-                    <div class="aside-mob">
-                        <img class="mob-avatar" id="avatar" alt="avatar">
-                        <div class="bio-section">
-                            <h2 class="heading mb-4" id="name"></h2>
-                            <p class="large-text" id="twitter-username"></p>
-                        </div>
-                    </div>
-                    <p class="base-text" id="bio"></p>
-                </div>
-                <div class="content p-20">
+                <div class="content p-20 tab" id="tab-one">
                     <div class="border py mb-24">
                         <input class="input-style" type="text" placeholder="Find a repository...">
                     </div>
-                    <h5>8 results for public repositories</h5>
                     <div id="repos"></div>
+                </div>
+                <div class="content p-20 tab" id="tab-two">
+                </div>
+                <div class="content p-20 tab" id="tab-three">
+                </div>
+                <div class="content p-20 tab" id="tab-four">
                 </div>
             </div>
         </div>

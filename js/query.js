@@ -1,4 +1,4 @@
-const gitHub_tok = '';
+const gitHub_tok = '5e1cba50bcf5f109339b5c811202d56c545ac36c';
 
 fetch('https://api.github.com/graphql', {
   method: "POST",
@@ -16,7 +16,7 @@ fetch('https://api.github.com/graphql', {
           email
           status{
             message
-            emoji
+            emojiHTML
           }
           repositories(first: 10, orderBy: {field:NAME, direction:ASC}){
             nodes{
@@ -41,7 +41,10 @@ fetch('https://api.github.com/graphql', {
   return res.json();
 })
 .then(data => {
-  // console.log(data.data.viewer.repositories.nodes);
+
+  if(!data){
+    console.log('loading')
+  }
 
   const {name, twitterUsername, bio, avatarUrl} = data.data.viewer;
 
@@ -53,6 +56,7 @@ fetch('https://api.github.com/graphql', {
   let thumbnail = document.getElementById('thumbnail');
   thumbnail.setAttribute('src', avatarUrl);
 
+  
   const repos = data.data.viewer.repositories.nodes.map(repo => {
 
     let date = new Date(repo.updatedAt);
@@ -77,4 +81,5 @@ fetch('https://api.github.com/graphql', {
     `;
   }).join(' ');
   document.getElementById('repos').innerHTML = repos;
+
 })
