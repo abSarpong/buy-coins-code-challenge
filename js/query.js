@@ -1,10 +1,11 @@
 // provide github generated token here
-const gitHub_token = 'e29d9e581c117e3baf5ae8e5eccab2a23ba1631c';
+// const gitHub_token = 'f0c6c5ee629950da446a9c375cfcf2403084e2c9';
 
 const options = {
   method: "POST",
   headers: {
-    Authorization: `bearer ${gitHub_token}`
+    // Authorization: `bearer ${gitHub_token}`
+    authorization: "token f0c6c5ee629950da446a9c375cfcf2403084e2c9",
   },
   body: JSON.stringify({
     query:`
@@ -19,7 +20,8 @@ const options = {
             message
             emojiHTML
           }
-          repositories(first: 10, orderBy: {field:NAME, direction:ASC}){
+          repositories(first: 10, privacy: PUBLIC, orderBy: {field:NAME, direction:ASC}){
+            totalCount
             nodes{
               name
               updatedAt
@@ -50,15 +52,19 @@ fetch('https://api.github.com/graphql', options)
   }
 
   const {name, twitterUsername, bio, avatarUrl} = data.data.viewer;
+  const {totalCount} = data.data.viewer.repositories;
 
   document.getElementById('name').innerHTML = name;
   document.getElementById('twitter-username').innerHTML = twitterUsername;
   document.getElementById('bio').innerHTML = bio;
+
   let avatar = document.getElementById('avatar');
   avatar.setAttribute('src', avatarUrl);
+  
   let thumbnail = document.getElementById('thumbnail');
   thumbnail.setAttribute('src', avatarUrl);
 
+  document.getElementById('total-count').innerHTML = totalCount + " results for public repositories";
   
   const repos = data.data.viewer.repositories.nodes.map(repo => {
 
