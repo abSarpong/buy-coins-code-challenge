@@ -5,7 +5,7 @@ const options = {
   method: "POST",
   headers: {
     // Authorization: `bearer ${gitHub_token}`
-    authorization: "token f0c6c5ee629950da446a9c375cfcf2403084e2c9",
+    authorization: "",
   },
   body: JSON.stringify({
     query:`
