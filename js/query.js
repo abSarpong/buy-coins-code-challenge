@@ -1,11 +1,10 @@
 // provide github generated token here
-const gitHub_token = '51fce987b13ec9f5bcb947c6630a61401b83997d';
+const gitHub_token = '';
 
 const options = {
   method: "POST",
   headers: {
     Authorization: `bearer ${gitHub_token}`
-    // authorization: "token f0c6c5ee629950da446a9c375cfcf2403084e2c9",
   },
   body: JSON.stringify({
     query:`
