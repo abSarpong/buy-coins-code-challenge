@@ -60,7 +60,7 @@ fetch('https://api.github.com/graphql', options)
 
   let avatar = document.getElementById('avatar');
   avatar.setAttribute('src', avatarUrl);
-  
+
   let thumbnail = document.getElementById('thumbnail');
   thumbnail.setAttribute('src', avatarUrl);
 
