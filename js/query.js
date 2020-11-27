@@ -1,5 +1,5 @@
 // provide github generated token here
-const gitHub_token = 'e29d9e581c117e3baf5ae8e5eccab2a23ba1631c';
+const gitHub_token = '';
 
 const options = {
   method: "POST",
