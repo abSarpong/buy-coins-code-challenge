@@ -1,39 +1,41 @@
 // provide github generated token here
-// const gitHub_token = 'f0c6c5ee629950da446a9c375cfcf2403084e2c9';
+const gitHub_token = '51fce987b13ec9f5bcb947c6630a61401b83997d';
 
 const options = {
   method: "POST",
   headers: {
-    // Authorization: `bearer ${gitHub_token}`
-    authorization: "token f0c6c5ee629950da446a9c375cfcf2403084e2c9",
+    Authorization: `bearer ${gitHub_token}`
+    // authorization: "token f0c6c5ee629950da446a9c375cfcf2403084e2c9",
   },
   body: JSON.stringify({
     query:`
-      query { 
-        viewer{
-          name
-          bio
-          twitterUsername
-          avatarUrl
-          email
-          status{
-            message
-            emojiHTML
-          }
-          repositories(first: 10, privacy: PUBLIC, orderBy: {field:NAME, direction:ASC}){
-            totalCount
-            nodes{
+    query{
+      repositoryOwner(login: "abSarpong"){
+        login
+      }
+      viewer{
               name
-              updatedAt
-              url
-              primaryLanguage{
-                name
-                color
+              bio
+              avatarUrl
+              email
+              status{
+                message
+                emojiHTML
+              }
+              repositories(first: 10, privacy: PUBLIC, orderBy: {field:NAME, direction:ASC}){
+                totalCount
+                nodes{
+                  name
+                  updatedAt
+                  url
+                  primaryLanguage{
+                    name
+                    color
+                  }
+                }
               }
             }
-          }
-        }
-      }
+    }
 `
   })
 }
@@ -51,11 +53,14 @@ fetch('https://api.github.com/graphql', options)
     console.log('loading')
   }
 
-  const {name, twitterUsername, bio, avatarUrl} = data.data.viewer;
+  const {name, bio, avatarUrl} = data.data.viewer;
+
+  const {login} = data.data.repositoryOwner;
+
   const {totalCount} = data.data.viewer.repositories;
 
   document.getElementById('name').innerHTML = name;
-  document.getElementById('twitter-username').innerHTML = twitterUsername;
+  document.getElementById('username').innerHTML = login;
   document.getElementById('bio').innerHTML = bio;
 
   let avatar = document.getElementById('avatar');
