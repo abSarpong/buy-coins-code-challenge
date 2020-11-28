@@ -5,6 +5,10 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   /* outline: 1px solid red !important; */
 }
+
+.hide {
+  display: none;
+}
 a {
   text-decoration: none;
   color: #0366d6;
@@ -140,9 +144,6 @@ a {
   }
   .mob-bio {
     display: block;
-  }
-  .hide {
-    display: none;
   }
   .mob-search-input {
     width: 95%;

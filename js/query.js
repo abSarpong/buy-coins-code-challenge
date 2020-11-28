@@ -1,3 +1,12 @@
+const renderElement = (id, value) => {
+  document.getElementById(id).innerHTML = value;
+};
+
+const renderImage = (id, value) => {
+  let avatar = document.getElementById(id);
+  avatar.setAttribute("src", value);
+};
+
 const options = {
   method: "POST",
   headers: {
@@ -34,15 +43,6 @@ const options = {
     }
 `,
   }),
-};
-
-const renderElement = (id, value) => {
-  document.getElementById(id).innerHTML = value;
-};
-
-const renderImage = (id, value) => {
-  let avatar = document.getElementById(id);
-  avatar.setAttribute("src", value);
 };
 
 fetch("https://api.github.com/graphql", options)
