@@ -38,7 +38,7 @@ a {
 }
 .search-input {
   width: 170px;
-  padding: 8px;
+  padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid #949494;
   margin-right: 16px;
@@ -127,6 +127,20 @@ a {
   height: 80px;
   border-bottom: 1px solid #eaecef;
 }
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  padding: 4px;
+  position: relative;
+  left: 200px;
+  bottom: 120px;
+}
 
 @media only screen and (max-width: 640px) {
   .custom-grid {
@@ -207,5 +221,8 @@ a {
     margin-bottom: 8px;
     position: relative;
     top: 0px;
+  }
+  .status {
+    display: none;
   }
 }

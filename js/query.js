@@ -57,6 +57,11 @@ fetch("https://api.github.com/graphql", options)
     const { login } = data.data.repositoryOwner;
     const { totalCount } = data.data.viewer.repositories;
 
+    document.getElementById("emoji").innerHTML =
+      data.data.viewer.status.emojiHTML;
+
+    console.log(data.data.viewer.status.emojiHTML);
+
     let portfolioInfo = {
       name: name,
       username: login,
