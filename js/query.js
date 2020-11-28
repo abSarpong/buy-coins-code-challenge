@@ -4,10 +4,10 @@
 const options = {
   method: "POST",
   headers: {
-    Authorization: `bearer ${gitHub_token.token}`
+    Authorization: `bearer ${gitHub_token.token}`,
   },
   body: JSON.stringify({
-    query:`
+    query: `
     query{
       repositoryOwner(login: "abSarpong"){
         login
@@ -35,46 +35,46 @@ const options = {
               }
             }
     }
-`
+`,
+  }),
+};
+
+fetch("https://api.github.com/graphql", options)
+  .then((res) => {
+    if (!res.ok) {
+      throw Error("Ooops something went wrong");
+    }
+    return res.json();
   })
-}
+  .then((data) => {
+    if (!data) {
+      console.log("loading");
+    }
 
-fetch('https://api.github.com/graphql', options)
-.then(res => {
-  if(!res.ok){
-    throw Error('Ooops something went wrong');
-  }
-  return res.json();
-})
-.then(data => {
+    const { name, bio, avatarUrl } = data.data.viewer;
 
-  if(!data){
-    console.log('loading')
-  }
+    const { login } = data.data.repositoryOwner;
 
-  const {name, bio, avatarUrl} = data.data.viewer;
+    const { totalCount } = data.data.viewer.repositories;
 
-  const {login} = data.data.repositoryOwner;
+    document.getElementById("name").innerHTML = name;
+    document.getElementById("username").innerHTML = login;
+    document.getElementById("bio").innerHTML = bio;
 
-  const {totalCount} = data.data.viewer.repositories;
+    let avatar = document.getElementById("avatar");
+    avatar.setAttribute("src", avatarUrl);
 
-  document.getElementById('name').innerHTML = name;
-  document.getElementById('username').innerHTML = login;
-  document.getElementById('bio').innerHTML = bio;
+    let thumbnail = document.getElementById("thumbnail");
+    thumbnail.setAttribute("src", avatarUrl);
 
-  let avatar = document.getElementById('avatar');
-  avatar.setAttribute('src', avatarUrl);
+    document.getElementById("total-count").innerHTML =
+      totalCount + " results for public repositories";
 
-  let thumbnail = document.getElementById('thumbnail');
-  thumbnail.setAttribute('src', avatarUrl);
+    const repos = data.data.viewer.repositories.nodes
+      .map((repo) => {
+        let date = new Date(repo.updatedAt);
 
-  document.getElementById('total-count').innerHTML = totalCount + " results for public repositories";
-  
-  const repos = data.data.viewer.repositories.nodes.map(repo => {
-
-    let date = new Date(repo.updatedAt);
-
-    return `
+        return `
           <div class="repo-list">
             <div>
                 <a href="${repo.url}">
@@ -82,9 +82,14 @@ fetch('https://api.github.com/graphql', options)
                 </a>
                 <div>
                     <span class="small-text pr-12">
-                        <i class="fa fa-circle fa fa-xs" style="color: ${repo.primaryLanguage.color}"></i> &nbsp;${repo.primaryLanguage.name}
+                        <i class="fa fa-circle fa fa-xs" style="color: ${
+                          repo.primaryLanguage.color
+                        }"></i> &nbsp;${repo.primaryLanguage.name}
                     </span>
-                    <span class="small-text">Updated on ${date.getDate()} ${date.toLocaleString('en', {month:'short'})}</span>
+                    <span class="small-text">Updated on ${date.getDate()} ${date.toLocaleString(
+          "en",
+          { month: "short" }
+        )}</span>
                 </div>
             </div>
             <span class="label">
@@ -92,7 +97,7 @@ fetch('https://api.github.com/graphql', options)
             </span>
           </div>
     `;
-  }).join(' ');
-  document.getElementById('repos').innerHTML = repos;
-
-})
+      })
+      .join(" ");
+    document.getElementById("repos").innerHTML = repos;
+  });
