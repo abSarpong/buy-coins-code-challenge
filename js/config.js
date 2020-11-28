@@ -1,4 +1,4 @@
 const gitHub_token = {
   // this should be const instead if you're using ES6 standards
-  token: "dec2adf1a54ed0e3fc3ccae35ad64c6aede566d1",
+  token: "5edf17967eea4ee02556621f364268216f3b66b7",
 };
