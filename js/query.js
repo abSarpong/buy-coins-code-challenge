@@ -61,7 +61,7 @@ fetch("https://api.github.com/graphql", options)
       name: name,
       username: login,
       bio: bio,
-      "total-count": totalCount + " results for public repositories",
+      "total-count": `${totalCount} results for public repositories`,
     };
 
     let images = {
