@@ -5,4 +5,4 @@
 - clone repo
 - cd into app directory
 
-`$ live-server`
+> `$ live-server`
