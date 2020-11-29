@@ -60,8 +60,6 @@ fetch("https://api.github.com/graphql", options)
     document.getElementById("emoji").innerHTML =
       data.data.viewer.status.emojiHTML;
 
-    console.log(data.data.viewer.status.emojiHTML);
-
     let portfolioInfo = {
       name: name,
       username: login,
