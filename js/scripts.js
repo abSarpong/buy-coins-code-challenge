@@ -1,3 +1,12 @@
+const renderElement = (id, value) => {
+  document.getElementById(id).innerHTML = value;
+};
+
+const renderImage = (id, value) => {
+  let avatar = document.getElementById(id);
+  avatar.setAttribute("src", value);
+};
+
 function toggleNav(id) {
   let element = document.getElementById(id);
 
